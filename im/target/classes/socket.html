@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width: 300px;height: 300px;border: 1px solid red;overflow: scroll" id="publicMsg"></div>
+<input type="text" id="submitMsg"><button onclick="sendMsg()">发送</button>
+<div class="" style="display: none" id="loginBox">
+    <input type="text" id="username"><button onclick="login()">登录</button>
+</div>
+
+<script>
+    if (window.WebSocket){
+        var webSocket = new WebSocket("ws://localhost:8888/ws");
+        webSocket.onopen = function (ev) {
+            console.log("连接成功");
+            var login = document.querySelector('#loginBox');
+            login.style.display="block"
+        }
+        webSocket.onmessage = function (ev) {
+            document.querySelector('#publicMsg').innerHTML += ('<br/>'+ev.data)
+        }
+        function sendMsg() {
+            var element = document.querySelector('#submitMsg');
+            webSocket.send("{message:"+element.value+"}")
+        }
+        function login(){
+            var msg = {
+                type:'login',
+                username:document.querySelector("#username").value
+            };
+            webSocket.send(JSON.stringify(msg))
+        }
+    }
+</script>
+</body>
+</html>

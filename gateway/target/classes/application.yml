@@ -1,0 +1,29 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+#      routes:
+#        - id: pro-service
+#          uri: http://localhost:8088/
+#          predicates:
+#            - Path=/product/**
+#        - id: auth-service
+#          uri: http://localhost:8888/
+#          predicates:
+#            - Path=/auth/**
+      discovery:
+        locator:
+          enabled: true
+  zipkin:
+    base-url: http://localhost:9411/
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1.0 # 数据收集百分比

@@ -1,0 +1,42 @@
+server:
+  port: 8001
+  servlet:
+    session:
+      cookie:
+        name: dfs # 防止多客户端情况下cookie冲突导致登录验证不通过
+
+oauth2-server-url: http://localhost:9000
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.223.85.241:3306/flame
+    type: com.alibaba.druid.pool.DruidDataSource
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: 123
+      user-authorization-uri: ${oauth2-server-url}/oauth/authorize
+      access-token-uri: ${oauth2-server-url}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${oauth2-server-url}/oauth/token_key
+fdfs:
+  connect-timeout: 600
+  so-timeout: 2500
+  thumb-image:
+    height: 100
+    width: 100
+  tracker-list:
+    - 124.223.85.241:22122
+
+upload:
+  base-url: http://124.223.85.241:8888
+  allowed-types:
+    - image/jpeg
+    - image/png
+    - image/bmp

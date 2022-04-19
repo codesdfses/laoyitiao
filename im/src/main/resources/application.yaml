@@ -1,0 +1,55 @@
+server:
+  port: 8007
+
+logging:
+  level:
+    root: INFO
+    #    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+spring:
+  datasource:
+    username: root
+    password: as212000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.223.85.241:3306/flame?serverTimezone=Asia/Shanghai
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+
+  redis:
+    host: 124.223.85.241
+    port: 6380
+    database: 0
+
+
+oauth2-server-url: http://localhost:9000
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: 123
+      user-authorization-uri: ${oauth2-server-url}/oauth/authorize
+      access-token-uri: ${oauth2-server-url}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${oauth2-server-url}/oauth/token_key
+
+fdfs:
+  connect-timeout: 600
+  so-timeout: 2500
+  thumb-image:
+    height: 100
+    width: 100
+  tracker-list:
+    - 124.223.85.241:22122
+
+upload:
+  base-url: http://124.223.85.241:8888
+  allowed-types:
+    - image/jpeg
+    - image/png
+    - image/bmp

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql" migrateIndexesAndConstraints="true">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="7ddb52c4-6a86-4e11-8bc7-beef64ad8b9b" />
+    <option name="reLastEntityCreationPackage" value="auth/src/main/java/com/laoyitiao/auth/entities" />
+    <reUseDbSnapshotConnections>
+      <dbConnection id="7ddb52c4-6a86-4e11-8bc7-beef64ad8b9b" />
+    </reUseDbSnapshotConnections>
+    <option name="newEntityIdStrategy" />
+    <option name="reIgnoreSlowDbConnections">
+      <ignoreDs id="7ddb52c4-6a86-4e11-8bc7-beef64ad8b9b" />
+    </option>
+  </component>
+</project>

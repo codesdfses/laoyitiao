@@ -1,0 +1,22 @@
+server:
+  port: 8002
+
+oauth2-server-url: http://localhost:9000
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.223.85.241:3306/flame
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: 123
+      user-authorization-uri: ${oauth2-server-url}/oauth/authorize
+      access-token-uri: ${oauth2-server-url}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${oauth2-server-url}/oauth/token_key

@@ -1,0 +1,49 @@
+server:
+  port: 8888
+logging:
+  level:
+    root: INFO
+#    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+
+spring:
+  # zipkin服务端启动命令： java -jar zipkin-server-2.23.9-exec.jar --STORAGE_TYPE=mysql --MYSQL_HOST=124.223.85.241 --MYSQL_TCP_PORT=3306 --MYSQL_USER=root --MYSQL_PASS=as212000 --MYSQL_DB=flame
+  zipkin:
+    base-url: http://localhost:9411/
+    sender:
+      type: web
+    sleuth:
+      sampler:
+        probability: 1.0 # 数据收集百分比
+  application:
+    name: auth
+  datasource:
+    username: root
+    password: as212000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.223.85.241:3306/flame?serverTimezone=Asia/Shanghai
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+
+      # create: 程序启动时，创建数据库表，如果表已存在则删除后重新创建
+      # create-drop: 程序启动时，创建数据库表，使用完毕后自动删除表
+      # none: 功能关闭
+      # update：程序启动时，如果没有实体类对应的表则创建。如果有则使用原来的表。
+      # validate： 校验实体类和数据库表的映射关系，如果字段属性不能完全对应则抛出异常
+    generate-ddl: true # 开发阶段开启逆向工程 根据数据库表生成实体
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect # 指定数据库平台(方言)
+  redis:
+    host: 124.223.85.241
+    port: 6380
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+
+
